@@ -1,7 +1,9 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 export default function Title() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -18,7 +20,9 @@ export default function Title() {
         <Image style={styles.image} source={require("../assets/Search.png")} />
       </View>
       </TouchableOpacity>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => {
+        navigation.navigate('CartScreen');
+      }}>
       <View style={styles.bagTitle}>
         <Image style={styles.image} source={require("../assets/shoppingBag.png")} />
       </View>

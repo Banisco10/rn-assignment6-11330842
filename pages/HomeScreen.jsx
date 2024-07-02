@@ -1,19 +1,20 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import Title from '../components/Title'
-import Subtitle from '../components/Subtitle'
+import Productlist from '../components/Productlist'
 
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Title />
-      <Subtitle />
+      <Productlist />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     container: {
+      backgroundColor: '#FFFFFF',
       paddingTop: 50,
     }
 })
