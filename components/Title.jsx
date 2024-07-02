@@ -37,12 +37,12 @@ const styles = StyleSheet.create ({
   container: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: "space-around"
+    justifyContent: "space-between"
   },
   textTitle: {
     alignItems: "center",
-    marginLeft: 80,
-    marginRight: 40
+    justifyContent: "center",
+    paddingLeft: 50,
   },
   optionsContainer: {
     flexDirection: "row",
@@ -64,5 +64,8 @@ const styles = StyleSheet.create ({
   image: {
     marginTop: 5,
     marginLeft: 5
-  }
+  },
+  menu: {
+    marginLeft: 10,
+  },
 })

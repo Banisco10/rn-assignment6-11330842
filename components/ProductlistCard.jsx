@@ -3,10 +3,13 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const ProductlistCard = ( { item, selectedPopularJobs }) => {
   return (
-    <TouchableOpacity style={styles.container(selectedPopularJobs, item)}>
+    <View style={styles.container(selectedPopularJobs, item)}>
       <View style={styles.infoContainer}>
       <Image style={styles.image} source={item.image}/>
-      <Image style={styles.add} source={require("../assets/add_circle.png")}/>
+
+      <TouchableOpacity style={styles.add}>
+      <Image source={require("../assets/add_circle.png")}/>
+      </TouchableOpacity>
 
       <View style={styles.descriptionsContainer}>
         <View style={styles.amount}>
@@ -20,7 +23,7 @@ const ProductlistCard = ( { item, selectedPopularJobs }) => {
         
       </View>
       </View>
-    </TouchableOpacity>
+    </View>
   )
 }
 

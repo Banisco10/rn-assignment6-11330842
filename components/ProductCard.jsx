@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
 const ProductCard = ( { item, selectedPopularJobs }) => {
   return (
-    <TouchableOpacity style={styles.container(selectedPopularJobs, item)}>
+    <View style={styles.container(selectedPopularJobs, item)}>
       <View style={styles.infoContainer}>
       <Image style={styles.image} source={item.image}/>
 
@@ -14,11 +14,13 @@ const ProductCard = ( { item, selectedPopularJobs }) => {
         <Text style={styles.prize} numberOfLines={1}>{item.prize}</Text>
         </View>
 
+      <TouchableOpacity>
       <Image style={styles.remove} source={require("../assets/remove.png")}/>
+      </TouchableOpacity>
          
       </View>
       </View>
-    </TouchableOpacity>
+    </View>
   )
 }
 

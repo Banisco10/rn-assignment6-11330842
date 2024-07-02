@@ -13,7 +13,7 @@ export default function Product() {
   const [selectedProductlist, setselectedProductlist] = React.useState(null);
   return (
     <View style={styles.container}>
-      <View contentContainerStyle = {styles.contentContainer}
+      <ScrollView contentContainerStyle = {styles.contentContainer}
        showsVerticalScrollIndicator={false}
       >
         {DATA.map((item) => (
@@ -23,7 +23,12 @@ export default function Product() {
           selectedProductlist={selectedProductlist}
            /> 
            ))}
+      </ScrollView>
+      <View style={styles.total}>
+        <Text style={styles.text}>EST. TOTAL</Text>
+        <Text style={styles.text}>$ 240</Text>
       </View>
+
     </View>
   )
 }
@@ -31,15 +36,27 @@ export default function Product() {
 
 const styles = StyleSheet.create({
     container: {
-      backgroundColor: '#FFFFFF',
       width: '100%',
-      height: '100%',
+      height: '80.7%',
       justifyContent: 'space-between',
-      marginTop: 30,
     },
     contentContainer: {
       flexDirection: 'row',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
     },
+    total: {
+      height: 50,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingHorizontal: 10,
+      paddingVertical: 10,
+  },
+  text:{
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
+  }
 })

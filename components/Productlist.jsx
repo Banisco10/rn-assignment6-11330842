@@ -19,8 +19,8 @@ export default function Productlist() {
   return (
     <View style={styles.container}>
       <View style={styles.productTitle}>
-      <View style={styles.text}>
-      <Text>Our Story</Text>
+      <View style={styles.textTitle}>
+      <Text style={styles.text}>Our Story</Text>
       </View>
       <View style={styles.subOptions}>
         <TouchableOpacity>
@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     },
     subOptions: {
       flexDirection: 'row',
-      justifyContent:'space-around',
+      justifyContent:'space-between',
+      columnGap: 5,
       right: 0
     },
     listView: {
