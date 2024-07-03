@@ -56,12 +56,12 @@ const styles = StyleSheet.create({
       color: selectedPopularJobs === item.popularjobs? '#0D0D26' : '#0D0D26',
     }),
     companyName: {
-      fontSize: 13,
+      fontSize: 14,
       color: '#0D0D26',
     },
     prize: {
-      fontSize: 12,
-      color: '#0D0D26',
+      fontSize: 16,
+      color: '#daa520',
     },
     image: {
       height: 120,

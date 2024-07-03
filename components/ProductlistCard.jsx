@@ -33,7 +33,7 @@ export default ProductlistCard
 const styles = StyleSheet.create({
   container: (selectedPopularJobs, item) => ({
     backgroundColor: selectedPopularJobs === item.popularjobs ? '#FFFFFF' : '#FFFFFF',
-    width: '48%',
+    width: '49%',
     height: 400,
     marginTop: 40,
     justifyContent: 'center',
@@ -55,11 +55,11 @@ const styles = StyleSheet.create({
   }),
   companyName: {
     fontSize: 13,
-    color: '#0D0D26',
+    color: '#808080',
   },
   prize: {
-    fontSize: 18,
-    color: '#0D0D26',
+    fontSize: 20,
+    color: '#daa520',
   },
   image: {
     height: 300,

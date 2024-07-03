@@ -20,7 +20,8 @@ export default function Productlist() {
   const addToCart = async(product) => {
     let DATA = await AsyncStorage.getItem('DATA');
     DATA = DATA ? JSON.parse(DATA) : [];
-    DATA.push(product);
+    const uniqueProduct = {...product, id: Date.now().toString()};
+    DATA.push(uniqueProduct);
     await AsyncStorage.setItem('DATA', JSON.stringify(DATA));
   };
   const [selectedProductlist, setselectedProductlist] = useState(null);

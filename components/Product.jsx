@@ -5,10 +5,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const DATA = [
-  { id: '1', job_title: 'Office Wear', prize: '$120', companyName: 'Office wear for you', image: require('../assets/dress1.png')},
-  { id: '2', job_title: 'Lamerei', prize: '$120', companyName: 'Rercycle Boucle Knit Cardigan Pink',  image: require('../assets/dress4.png')},
-  { id: '3', job_title: 'Church Wear', prize: '$120', companyName: 'Rercycle Boucle Knit Cardigan Pink', image: require('../assets/dress3.png')},
+  { id: '1', job_title: 'Office Wear', prize: '$120', companyName: 'reversible angora cardigan', image: require('../assets/dress1.png')},
+  { id: '2', job_title: 'Black', prize: '$120', companyName: 'reversible angora cardigan',  image: require('../assets/dress2.png')},
+  { id: '3', job_title: 'Church Wear', prize: '$120', companyName: 'reversible angora cardigan', image: require('../assets/dress3.png')},
 ];
+
 
 export default function Product() {
   const [DATA, setDATA] = useState([]);
@@ -21,15 +22,21 @@ export default function Product() {
     };
 
     const removeFromCart = async (product) => {
-     let updatedDATA = DATA.filter((item) => item.id !== product.id);
-     await AsyncStorage.setItem('DATA', JSON.stringify(updatedDATA));
-     setDATA(updatedDATA);
+      let DATA = await AsyncStorage.getItem('DATA');
+      DATA = DATA ? JSON.parse(DATA) : [];
+      DATA = DATA.filter((item) => item.id !== product.id);
+      await AsyncStorage.setItem('DATA', JSON.stringify(DATA));
+      setDATA(DATA);
     };
+  
 
     useEffect(() => {
       loadCart();
     }, []);
 
+    const calculateTotal = () =>{
+      return DATA.reduce((sum, item) => sum + parseFloat(item.prize.replace('$', '')), 0);
+    };
 
   return (
     <View style={styles.container}>
@@ -48,7 +55,7 @@ export default function Product() {
       </ScrollView>
       <View style={styles.total}>
         <Text style={styles.text}>EST. TOTAL</Text>
-        <Text style={styles.text}>$ 240</Text>
+        <Text style={styles.textTotal}>$ {calculateTotal()}</Text>
       </View>
 
     </View>
@@ -80,5 +87,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#333',
     marginBottom: 5,
+  },
+  textTotal:{
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 5,
+    color: '#daa520'
   }
 })
