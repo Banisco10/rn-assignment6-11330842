@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const ProductCard = ( { item, selectedPopularJobs }) => {
+const ProductCard = ( { item, selectedPopularJobs, removeFromCart }) => {
   return (
     <View style={styles.container(selectedPopularJobs, item)}>
       <View style={styles.infoContainer}>
@@ -14,8 +14,8 @@ const ProductCard = ( { item, selectedPopularJobs }) => {
         <Text style={styles.prize} numberOfLines={1}>{item.prize}</Text>
         </View>
 
-      <TouchableOpacity>
-      <Image style={styles.remove} source={require("../assets/remove.png")}/>
+      <TouchableOpacity onPress={() => removeFromCart(item)}>
+        <Image style={styles.remove} source={require("../assets/remove.png")}/>
       </TouchableOpacity>
          
       </View>

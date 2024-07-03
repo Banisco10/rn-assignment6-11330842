@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 
-const ProductlistCard = ( { item, selectedPopularJobs }) => {
+const ProductlistCard = ( { item, selectedPopularJobs, addToCart }) => {
   return (
     <View style={styles.container(selectedPopularJobs, item)}>
       <View style={styles.infoContainer}>
       <Image style={styles.image} source={item.image}/>
 
-      <TouchableOpacity style={styles.add}>
+      <TouchableOpacity style={styles.add} onPress={() => addToCart(item)}>
       <Image source={require("../assets/add_circle.png")}/>
       </TouchableOpacity>
 

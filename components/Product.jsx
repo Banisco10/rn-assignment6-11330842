@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProductCard from './ProductCard';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const DATA = [
@@ -10,19 +11,40 @@ const DATA = [
 ];
 
 export default function Product() {
-  const [selectedProductlist, setselectedProductlist] = React.useState(null);
+  const [DATA, setDATA] = useState([]);
+  const [selectedProductlist, setselectedProductlist] = useState(null);
+
+    const loadCart = async () => {
+      let DATA = await AsyncStorage.getItem('DATA');
+      DATA = DATA? JSON.parse(DATA) : [];
+      setDATA(DATA);
+    };
+
+    const removeFromCart = async (product) => {
+     let updatedDATA = DATA.filter((item) => item.id !== product.id);
+     await AsyncStorage.setItem('DATA', JSON.stringify(updatedDATA));
+     setDATA(updatedDATA);
+    };
+
+    useEffect(() => {
+      loadCart();
+    }, []);
+
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle = {styles.contentContainer}
        showsVerticalScrollIndicator={false}
       >
         {DATA.map((item) => (
-          <ProductCard
+        <ProductCard
+          data = {DATA}
           key={item.id}
           item = {item}
           selectedProductlist={selectedProductlist}
-           /> 
-           ))}
+          removeFromCart={removeFromCart}
+        /> 
+      ))}
       </ScrollView>
       <View style={styles.total}>
         <Text style={styles.text}>EST. TOTAL</Text>
